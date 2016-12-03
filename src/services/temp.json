@@ -1,0 +1,40 @@
+[{
+  id:'20669985',
+	  title:'PhD student position in Computer Science',
+		  tags: ['math', 'analysis', 'communcation', 'scientific research']
+			},
+			{
+			  id:'20672680',
+				  title:'Hotellreceptionist',
+					  tags: ['service', 'organization', 'social skills']
+						},
+						{
+						  id:'20674241',
+							  title:'Utbildningsledare med juridisk kompetens',
+								  tags: ['service', 'education', 'social skills']
+									},
+									{
+									  id:'20671892',
+										  title:'Sales Engineer inom automation och drivsystem',
+											  tags: ['sales', 'finance', 'CRM']
+												},
+												{
+												  id:'6959045',
+													  title:'Receptionist/Säljare till Nordic Wellness Malmö City',
+														  tags: ['service', 'health', 'fitness', 'social skills']
+															},
+															{
+															  id:'10435165',
+																  title:'ACCOUNT MANAGER',
+																	  tags: ['sales']
+																		},
+																		{
+																		  id:'20661341',
+																			  title:'19-årig tjej i Malmö söker personlig assistent',
+																				  tags: ['service', 'people skills', 'personal assistance']
+																					},
+																					{
+																					  id:'20660611',
+																						  title:'Vill du vara med och utveckla världens finaste bilar?',
+																							  tags: ['MS Office', 'Forklift licens', 'prototyping']
+																								}]:

@@ -25,6 +25,16 @@ function updateTags (userid, tags) {
 	return http.post(url, body);
 }
 
+function setJobSwipe(userid, jobid, swipe) {
+	var url = "http://192.168.8.103:8080/job_swipe";
+	var body = {
+		userId: userid,
+		jobId: jobid,
+		like: swipe
+	};
+	return http.post(url, body);
+}
+
 function buildTagsBody (id, tags) {
 	return {
 		userId: id,
@@ -35,5 +45,6 @@ function buildTagsBody (id, tags) {
 
 module.exports = {
 	getJobs: fetchJobs,
-	setTagsDelta: updateTags
+	setTagsDelta: updateTags,
+	setJobSwipe: setJobSwipe
 }

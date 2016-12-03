@@ -7,12 +7,13 @@ function getJobIds (userid) {
 } 
 
 //use af-jobs to fetch from af
-function work(userid) {
+module.exports = function (userid) {
 	
 	return matchEngine
 		.getJobs(userid, 5)
-		.then(function(ids) {
-			var _ids = ids.map(function(obj) {
+		.then(function(jobpostIds) {
+			
+			var _ids = jobpostIds.map(function(obj) {
 				return obj.id;
 			})
 		
@@ -20,8 +21,8 @@ function work(userid) {
 				.then(function(jobposts) {
 
 					var output = jobposts.map(function (post) {
-						var id = ids.find(function (asd) {
-							return asd.id == post.platsannons.annons.annonsid;
+						var id = jobpostIds.find(function (_job) {
+							return _job.id == post.platsannons.annons.annonsid;
 						})
 
 						post.platsannons.tags = id.tags.map(function(tag){
@@ -34,4 +35,3 @@ function work(userid) {
 		})
 }
 
-module.exports = work;
