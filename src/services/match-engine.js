@@ -21,7 +21,6 @@ function fetchJobs(userid, length) {
 function updateTags (userid, tags) {
 	var body = buildTagsBody(userid, tags);
 	var url = 'http://192.168.8.103:8080/update_user_recommendations';
-	
 	return http.post(url, body);
 }
 

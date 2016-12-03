@@ -21,6 +21,7 @@ app.use(bodyParser.json())
 var jobs  = require('./services/jobs.js')
 var matchEngine = require('./services/match-engine.js')
 var users = require('./services/users.js')
+var employer = require('./services/employer.js')
 
 app.get('/jobs', function(req, res) {
 	var id = req.headers["js-userid"]; 
@@ -55,7 +56,7 @@ app.post('/jobs', function(req, res) {
 			res.status(200);
 			res.end();
 		})
-		.then(function(err) {
+		.catch(function(err) {
 			console.log(err);
 			res.status(500);
 			res.end();
@@ -68,13 +69,14 @@ app.post('/update-tags', function(req, res) {
 	var id = req.headers["js-userid"]; 
 	var tags = req.body.tags;
 	
+	
 	matchEngine
 		.setTagsDelta(id, tags)
 		.then(function() {
 			res.status(200);
 			res.end();
 		})
-		.then(function(err) {
+		.catch(function(err) {
 			console.log(err);
 			res.status(500);
 			res.end();
@@ -90,7 +92,7 @@ app.get('/user', function (req, res) {
 	
 	
 	users
-		.get(userids)
+		.get(userid)
 		.then(function (user) {
 			res.json(user)
 		})
@@ -107,30 +109,26 @@ app.get('/user', function (req, res) {
 app.get('/employer-stats/:id', function(req, res) {
 	var id = req.params.id;
 
-	var data = {
-		overview: {
-			likes: 37,
-			dislikes: 13
-		},
-		jobs: [
-			{
-				id: '12345',
-				title: 'This is a job listing',
-				like: 1,
-				dislikes: 3
-			}
-		],
-		jobseekers: [
-			{
-				name: 'John Doe',
-				location: 'malmö'
-			}
-		] 
-	}
+	employer
+		.getStats(id)
+		.then(function(data) {
+			res.json(data);
+		})
+		.catch(function(err) {
+			console.log(err);
+			console.log("EPIC FAIL!");
+		})
 
-	res.json(data);
+
 })
 
+
+/*
+ *	
+ */
+app.get('/user-tags-swiped', function (req, res) {
+
+})
 app.listen(8888);
 
 console.log("Running at localhost:8888");
