@@ -1,4 +1,5 @@
 var http = require('./http.js')
+var getJobDetails = require('./af-jobs.js');
 
 var users = [
 	{
@@ -32,10 +33,19 @@ function get(id) {
 
 }
 
-function getSwiptedJobs(id) {
-	var url = "http://192.168.8.103:8080/"
+function getSwipedJobs(id, type) {
 
-	return http.get(url);
+	var url = (type === 'negative')
+		? "http://192.168.8.103:8080/negative_swiped_jobs?userId="+id
+		: "http://192.168.8.103:8080/positive_swiped_jobs?userId="+id 
+	
+	console.log(url);
+
+	return http
+		.get(url)
+		.then(function(jobids) {
+			return getJobDetails(jobids);
+		})
 }
 
 function getDetails(id) {
@@ -46,5 +56,6 @@ function getDetails(id) {
 
 module.exports = {
 	get: get,
-	getDetails: getDetails
+	getDetails: getDetails,
+	getSwipedJobs: getSwipedJobs
 }

@@ -124,10 +124,20 @@ app.get('/employer-stats/:id', function(req, res) {
 
 
 /*
- *	
+ * This is a comment	
  */
-app.get('/user-tags-swiped', function (req, res) {
+app.get('/user-tags-swiped/:type', function (req, res) {
+  var userid = req.headers['js-userid'];
+	var type = req.params.type;
 
+	users
+		.getSwipedJobs(userid, type)
+		.then(function(jobs) {
+			res.json(jobs);
+		})
+		.catch(function(err) {
+			res.json(err); console.log(err);
+		})
 })
 app.listen(8888);
 
