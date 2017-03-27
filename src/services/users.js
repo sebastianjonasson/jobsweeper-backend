@@ -1,5 +1,6 @@
 var http = require('./http.js')
 var getJobDetails = require('./af-jobs.js');
+var env = require('../environment').getEnvironment(); 
 
 var users = [
 	{
@@ -16,7 +17,7 @@ var users = [
 ]
 
 function get(id) {
-	var url = 'http://192.168.8.103:8080/get_tags_for_user?userId='+id
+	var url = env.engineIP + '/get_tags_for_user?userId='+id
 
 	return http
 		.get(url)
@@ -36,8 +37,8 @@ function get(id) {
 function getSwipedJobs(id, type) {
 
 	var url = (type === 'negative')
-		? "http://192.168.8.103:8080/negative_swiped_jobs?userId="+id
-		: "http://192.168.8.103:8080/positive_swiped_jobs?userId="+id 
+		? env.engineIP + "/negative_swiped_jobs?userId="+id
+		: env.engineIP + "/positive_swiped_jobs?userId="+id 
 	
 	console.log(url);
 

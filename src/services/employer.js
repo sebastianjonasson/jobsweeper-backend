@@ -1,14 +1,15 @@
 var http = require('./http.js')
 var getJobDetails = require('./af-jobs.js')
 var users = require('./users.js')
+var env = require('../environment').getEnvironment(); 
 
 function getOverview(employerid) {
-	var url = "http://192.168.8.103:8080/overall_stats_employer?employerId="+employerid; 
+	var url =  env.engineIP + "/overall_stats_employer?employerId="+employerid; 
 	return http.get(url)
 }
 
 function getJobs(employerid) {
-  var url = "http://192.168.8.103:8080/job_stats?employerId="+employerid;
+  var url = env.engineIP + "/job_stats?employerId="+employerid;
 
 	return http
 		.get(url)
@@ -31,7 +32,7 @@ function getJobs(employerid) {
 }
 
 function getApplicants(employerid) {
-	var url = 'http://192.168.8.103:8080/job_applicants?employerId='+employerid
+	var url =  env.engineIP + '/job_applicants?employerId='+employerid
 
 	return http
 		.get(url)

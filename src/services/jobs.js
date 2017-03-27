@@ -20,6 +20,8 @@ module.exports = function (userid) {
 			return afJobs(_ids)
 				.then(function(jobposts) {
 
+					console.log(jobposts); 
+					
 					var output = jobposts.map(function (post) {
 						var id = jobpostIds.find(function (_job) {
 							return _job.id == post.platsannons.annons.annonsid;

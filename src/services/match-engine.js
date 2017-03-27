@@ -1,13 +1,15 @@
 var http = require('./http.js')
+var env = require('../environment').getEnvironment(); 
+
 
 function fetchJobs(userid, length) {
 	length = length || 5;
 
 	var options = {
-		hostname: '192.168.8.103',
+		hostname: env.engineIPOnly,
 		path:'/get_job_recs?userId=1&recNumber='+length,
 		method: 'GET',
-		port: 8080,
+		port: env.enginePort,
 		headers: {}
 	}
 
@@ -20,12 +22,12 @@ function fetchJobs(userid, length) {
 
 function updateTags (userid, tags) {
 	var body = buildTagsBody(userid, tags);
-	var url = 'http://192.168.8.103:8080/update_user_recommendations';
+	var url = env.engineIP + '/update_user_recommendations';
 	return http.post(url, body);
 }
 
 function setJobSwipe(userid, jobid, swipe) {
-	var url = "http://192.168.8.103:8080/job_swipe";
+	var url = env.engineIP + "/job_swipe";
 	var body = {
 		userId: userid,
 		jobId: jobid,

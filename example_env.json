@@ -1,0 +1,5 @@
+{
+	"engineIP": "http://localhost:8080",
+	"engineIPOnly": "http://localhost",
+	"enginePort": 8080
+}

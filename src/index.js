@@ -32,7 +32,8 @@ app.get('/jobs', function(req, res) {
 		.then(function(jobs) {
 			res.json(jobs)
 		})
-		.catch(function () {
+		.catch(function (err) {
+			console.log(err); 
 			res.json({"general":"error"})
 		}) 
 });
