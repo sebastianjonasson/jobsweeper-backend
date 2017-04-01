@@ -5,9 +5,11 @@ var env = require('../environment').getEnvironment();
 function fetchJobs(userid, length) {
 	length = length || 5;
 
+	
+
 	var options = {
 		hostname: env.engineIPOnly,
-		path:'/get_job_recs?userId=1&recNumber='+length,
+		path:'/get_job_recs?userId='+ userid + '&recNumber='+length,
 		method: 'GET',
 		port: env.enginePort,
 		headers: {}

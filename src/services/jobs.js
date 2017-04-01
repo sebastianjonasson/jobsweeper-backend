@@ -8,6 +8,7 @@ function getJobIds (userid) {
 
 //use af-jobs to fetch from af
 module.exports = function (userid) {
+
 	
 	return matchEngine
 		.getJobs(userid, 5)
@@ -20,8 +21,6 @@ module.exports = function (userid) {
 			return afJobs(_ids)
 				.then(function(jobposts) {
 
-					console.log(jobposts); 
-					
 					var output = jobposts.map(function (post) {
 						var id = jobpostIds.find(function (_job) {
 							return _job.id == post.platsannons.annons.annonsid;

@@ -6,12 +6,12 @@ var users = [
 	{
 		id: 1,
 		name: 'Victor Axelsson',
-		image: 'https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/13346836_1005993406134268_2346887312726116763_n.jpg?oh=166daa935f4f2b10aeea191bf43d99eb&oe=58C70377',
+		image: 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg',
 	},
 	{
 		id: 2,
 		name: 'Felex P',
-		image: 'https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/542799_450402538360027_38379532_n.jpg?oh=68c28f1a2e270f526b1c9432a836fa04&oe=58C1BBE4',
+		image: 'https://i.ytimg.com/vi/7p13vPNTQkQ/hqdefault.jpg',
 	},
 	
 ]

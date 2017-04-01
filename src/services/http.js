@@ -7,7 +7,8 @@ module.exports = {
 }
 
 function httpGet(options) {
-
+	console.log(options);
+	
 	return new Promise(function(resolve, reject) { 
 		var chunks = "";
 

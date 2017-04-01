@@ -1,4 +1,6 @@
 var request = require('request');
+var env = require('../src/environment').getEnvironment(); 
+
 
 var url = "http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?yrkesid=2419&antalrader=10&sida=";
 var joburl = "http://api.arbetsformedlingen.se/af/v0/platsannonser/";
@@ -23,6 +25,12 @@ function query(page) {
 	}, function(err, res, body) {
 		var jobs = JSON.parse(body);
 		jobs = jobs.matchningslista.matchningdata;
+		
+	
+		if(!jobs){
+			jobs = []; 
+		}
+
 		var tasks = jobs.map(function (job) {
 			return new Promise(function(resolve, reject) {
 			
@@ -85,7 +93,7 @@ function findTags(text, tags) {
 }
 
 function sendToDB(input) {
-	var url = "http://192.168.8.103:8080/insert_new_jobs";
+	var url = env.engineIP + "/insert_new_jobs";
 	
 	return new Promise(function(resolve, reject) {
 	
